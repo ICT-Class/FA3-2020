@@ -6,6 +6,24 @@
     <title>Document</title>
   </head>
   <body>
-    {% for pokemon in results %} {{pokemon.name}} {% endfor %}
+      <div>
+        <table>
+          {% for pokemon in results %} 
+          <tr>
+            <td>
+              Name: {{pokemon.name}} 
+            </td>
+            <td>
+              HP: {{pokemon.hp}} 
+            </td>
+            <td>
+              Height: {{pokemon.height_m}} 
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+
+      </div>
+
   </body>
 </html>
