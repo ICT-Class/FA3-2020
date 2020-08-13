@@ -13,7 +13,7 @@ def index():
 
 @app.route('/firstpokemon')
 def firstpokemon():
-    response = requests.get('http://127.0.0.1:5000/1')
+    response = requests.get('http://127.0.0.1:5000/22')
     # print(response.json())
     return render_template("poke_info.html", pokemon=response.json()[0])
 

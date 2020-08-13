@@ -1,15 +1,23 @@
 import sqlite3
-from flask import Flask, jsonify
+from flask import Flask, jsonify, g
 
 app = Flask(__name__)
 
-
+DATABASE = 'pokemon.db'
+def get_db():
+    """ 
+    Function make use of Flask Global object to share db connection
+    Function return the db connect
+     """
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DATABASE)
+        db.row_factory = sqlite3.Row
+    return db
 
 @app.route('/')
 def pokemon():
-    conn = sqlite3.connect('pokemon.db')
-    conn.row_factory = sqlite3.Row
-    c = conn.cursor()
+    c = get_db().cursor()
     results = c.execute("SELECT * FROM pokemon")
     pokemon_info = []
     for row in results:
@@ -18,9 +26,7 @@ def pokemon():
 
 @app.route("/<int:id>")
 def get_poke_by_id(id):
-    conn = sqlite3.connect('pokemon.db')
-    conn.row_factory = sqlite3.Row
-    c = conn.cursor()
+    c = get_db().cursor()
     results = c.execute("SELECT * FROM pokemon WHERE pokedexID =" + str(id))
     pokemon_info = []
     for row in results:
