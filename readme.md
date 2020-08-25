@@ -13,29 +13,29 @@ Endpoints as follows:
 ##### Pokemon Api
 
 - pokemon (GET) - Retrieve allpokemon
-- pokemon/<int> (GET, PUT, DELETE) - Retrieve, update, delete a pokemon
+- pokemon/\<int> (GET, PUT, DELETE) - Retrieve, update, delete a pokemon
 - pokemon/add (POST) - Add a pokemon
 
 ##### User Api
 
 - user (GET) - Retrieve user
-- user/<int> (GET, PUT, DELETE) - Retrieve, update, delete a user
+- user/\<int> (GET, PUT, DELETE) - Retrieve, update, delete a user
 - user/add (POST) - Add a user
 
 ##### Comment Api
 
 - comment (GET) - Retrieve comment
-- comment/<int> (GET, PUT, DELETE) - Retrieve, update, delete a comment
-- comment/userId/<int>/ (GET) - Retrieve comment(s) from a given userId only
-- comment/caughtId/<int>/ (GET) - Retrieve comment(s) from a given caughtId only
+- comment/\<int> (GET, PUT, DELETE) - Retrieve, update, delete a comment
+- comment/userId/\<int>/ (GET) - Retrieve comment(s) from a given userId only
+- comment/caughtId/\<int>/ (GET) - Retrieve comment(s) from a given caughtId only
 - comment/add (POST) - Add a comment
 
 ##### Caught Api
 
 - caught (GET) - Retrieve caught
-- caught/<int> (GET, PUT, DELETE) - Retrieve, update, delete a caught
-- caught/pokeId/<int>/ (GET) - Retrieve caught(s) from a given pokeId only
-- caught/userId/<int>/ (GET) - Retrieve caught(s) from a given userId only
+- caught/\<int> (GET, PUT, DELETE) - Retrieve, update, delete a caught
+- caught/pokeId/\<int>/ (GET) - Retrieve caught(s) from a given pokeId only
+- caught/userId/\<int>/ (GET) - Retrieve caught(s) from a given userId only
 - caught/add (POST) - Add a caught
 
 ## /Web Server

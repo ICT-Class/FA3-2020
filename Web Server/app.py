@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    response = requests.get('http://127.0.0.1:5000/')
-    # print(response.json())
-    return render_template("index.html", results=response.json())
+    caught = requests.get('http://127.0.0.1:5000/caught')
+    return render_template("index.html", caught=caught.json())
+
 
 @app.route('/firstpokemon')
 def firstpokemon():

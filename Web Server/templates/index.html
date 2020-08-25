@@ -3,30 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='home.css') }}"
+    />
+
     <title>Document</title>
   </head>
   <body>
-      <div>
-        <table>
-          {% for pokemon in results %} 
-          <tr>
-            <td>
-              Name: {{pokemon.name}} 
-            </td>
-            <td>
-              HP: {{pokemon.hp}} 
-            </td>
-            <td>
-              SPeed: {{pokemon.speed}} 
-            </td>
-            <td>
-              Height: {{pokemon.height_m}} 
-            </td>
-          </tr>
-          {% endfor %}
-        </table>
-
-      </div>
-
+    <div>
+      <table>
+        {% for catch in caught %}
+        <tr>
+          <td>
+            id: {{catch.caughtId}}
+          </td>
+          <td>
+            Date: {{catch.datetime}}
+          </td>
+          <td>
+            state: {{catch.state}}
+          </td>
+          <td>
+            by: {{catch.userId}}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
   </body>
 </html>
