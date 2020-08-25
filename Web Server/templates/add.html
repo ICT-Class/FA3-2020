@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <title>Add a Pokemon</title>
+  </head>
+  <body>
+    <div class="menu">
+      <ul>
+        <li>Add</li>
+        <li>Pokemon</li>
+        <li>Players</li>
+      </ul>
+    </div>
+    <div class="formwrapper">
+      <h2 class="title">Add a Pokemon</h2>
+      <form method="POST" action="/add">
+        Name: <input type="text" name="name" required /><br />
+        hp: <input type="text" name="hp" /><br />
+        attack: <input type="text" name="attack" /><br />
+        defense: <input type="text" name="defense" /><br />
+        speed: <input type="text" name="speed" /><br />
+        image: <input type="text" name="image" /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      {% if name %}
+      <h2>Added {{name}}</h2>
+      {% endif %}
+    </div>
+  </body>
+</html>
