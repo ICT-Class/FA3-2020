@@ -3,7 +3,9 @@ from flask import Flask, jsonify, g
 
 app = Flask(__name__)
 
-DATABASE = 'pokemon.db'
+DATABASE = 'database.db'
+
+
 def get_db():
     """ 
     Function make use of Flask Global object to share db connection
@@ -15,7 +17,8 @@ def get_db():
         db.row_factory = sqlite3.Row
     return db
 
-@app.route('/')
+
+@app.route('/pokemon')
 def pokemon():
     c = get_db().cursor()
     results = c.execute("SELECT * FROM pokemon")
@@ -24,10 +27,11 @@ def pokemon():
         pokemon_info.append(dict(row))
     return jsonify(pokemon_info)
 
-@app.route("/<int:id>")
+
+@app.route("pokemon/<int:id>", methods=['GET', 'PUT', 'DELETE'])
 def get_poke_by_id(id):
     c = get_db().cursor()
-    results = c.execute("SELECT * FROM pokemon WHERE pokedexID =" + str(id))
+    results = c.execute("SELECT * FROM pokemon WHERE pokeId =" + str(id))
     pokemon_info = []
     for row in results:
         pokemon_info.append(dict(row))
