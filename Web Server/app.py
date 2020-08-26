@@ -1,6 +1,7 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
 from flask.templating import render_template
 import requests
+from flask.helpers import make_response, url_for
 
 app = Flask(__name__)
 
@@ -36,7 +37,10 @@ def firstpokemon():
 
 @app.route('/add')
 def add():
-    return render_template("add.html")
+    isLoggedIn = request.cookies.get('user')
+    if isLoggedIn:
+        return render_template("add.html")
+    return redirect(url_for('login', error="Please login to add pokemon"))
 
 
 @app.route('/add', methods=['POST'])
@@ -55,7 +59,9 @@ def response():
 
 @app.route('/login')
 def login():
-    return render_template("login.html")
+    if request.cookies.get('user'):
+        return render_template("login.html", error=request.args.get('error'), user=request.cookies.get('user'), isLoggedIn=True)
+    return render_template("login.html", error=request.args.get('error'))
 
 
 @app.route('/user/create', methods=['POST'])
@@ -78,7 +84,10 @@ def login_user():
     isLoggedIn = response.text.rstrip()
     if isLoggedIn == 'false':
         return render_template("login.html", isLoggedIn=False, error="Incorrect login or password")
-    return render_template("login.html", isLoggedIn=True, user=user['email'])
+    resp = make_response(render_template(
+        "login.html", isLoggedIn=True, user=user['email']))
+    resp.set_cookie('user', user['email'])
+    return resp
 
 
 if __name__ == '__main__':

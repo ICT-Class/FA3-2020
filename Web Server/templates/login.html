@@ -24,7 +24,7 @@
     <h2>Welcome {{user}}</h2>
     {% endif %} {% if error %}
     <h2>{{error}}</h2>
-    {% endif %}
+    {% endif %} {% if not isLoggedIn %}
     <div class="formwrapper">
       <h2 class="title">Login</h2>
       <form method="POST" action="/user/login">
@@ -33,6 +33,7 @@
         <button type="submit">Login</button>
       </form>
     </div>
+
     <div class="formwrapper">
       <h2 class="title">Create</h2>
       <form method="POST" action="/user/create">
@@ -41,5 +42,6 @@
         <button type="submit">Create</button>
       </form>
     </div>
+    {% endif %}
   </body>
 </html>
