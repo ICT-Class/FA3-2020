@@ -8,6 +8,8 @@ API Server is a REST API that serve data through API endpoints.
 API Server uses SQLite database and demonstrates the use of SQL to perform CRUD operations.
 No object-relational mapper like sqlalchemy used.
 
+![ER](https://github.com/IT-class-repo/FA3-2020/raw/master/ERD.png "ER")
+
 Endpoints as follows:
 
 ##### Pokemon Api
@@ -41,6 +43,8 @@ Endpoints as follows:
 ## /Web Server
 
 /Web Server uses Flask framework and connects to the API server
+
+![UI](https://github.com/IT-class-repo/FA3-2020/raw/master/Pokemon Social UI.png "UI")
 
 ## Copyright
 
