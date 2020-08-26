@@ -68,5 +68,18 @@ def create_user():
     return render_template("login.html", email=user['email'], password=user['password'])
 
 
+@app.route('/user/login', methods=['POST'])
+def login_user():
+    user = {
+        "email": request.form.get("email"),
+        "password": request.form.get("password"),
+    }
+    response = requests.post("http://127.0.0.1:5000/user/login", json=user)
+    isLoggedIn = response.text.rstrip()
+    if isLoggedIn == 'false':
+        return render_template("login.html", isLoggedIn=False, error="Incorrect login or password")
+    return render_template("login.html", isLoggedIn=True, user=user['email'])
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

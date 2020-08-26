@@ -20,6 +20,10 @@
     </div>
     {% if email %}
     <h2>Added {{email}}</h2>
+    {% endif %} {% if isLoggedIn %}
+    <h2>Welcome {{user}}</h2>
+    {% endif %} {% if error %}
+    <h2>{{error}}</h2>
     {% endif %}
     <div class="formwrapper">
       <h2 class="title">Login</h2>
