@@ -36,6 +36,20 @@ def response():
     requests.post('http://127.0.0.1:5000/pokemon/add', json=newPoke)
     return render_template("add.html", name=newPoke['name'], hp=newPoke["hp"], attack=newPoke["attack"], defense=newPoke["defense"], speed=newPoke['speed'], image=newPoke['image'])
 
+@app.route('/login')
+def login():
+    return render_template("login.html")
+
+
+@app.route('/user/create', methods=['POST'])
+def create_user():
+    user = {
+        "email": request.form.get("email"),
+        "password": request.form.get("password"),
+    }
+    requests.post("http://127.0.0.1:5000/user/create", json=user)
+    return render_template("login.html", email=user['email'], password=user['password'])
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

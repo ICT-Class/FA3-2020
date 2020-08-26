@@ -41,6 +41,19 @@ def get_poke_by_id(id):
     elif request.method == 'DELETE':
         pass  # Todo
 
+#user/create
+@app.route("/user/create", methods=['POST'])
+def add_user():
+    newUser = request.get_json()
+    if not newUser or 'email' not in newUser or 'password' not in newUser:
+        return jsonify({"error": "email or password not found"})
+    email = newUser.get('email')
+    password = newUser.get("password")
+    c = get_db().cursor()
+    sql = "INSERT INTO User (email,password) VALUES (?,?)"
+    c.execute(sql, (email, password))
+    get_db().commit()
+    return jsonify("done")
 
 @app.route("/pokemon/add", methods=['POST'])
 def add_poke():
