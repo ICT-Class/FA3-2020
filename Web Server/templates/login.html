@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <title>Add a User</title>
+  </head>
+  <body>
+    <div class="menu">
+      <ul>
+        <li>Add</li>
+        <li>Pokemon</li>
+        <li>Players</li>
+      </ul>
+    </div>
+    <div class="formwrapper">
+      <h2 class="title">Login</h2>
+      <form method="POST" action="/user/login">
+        Email: <input type="text" name="email" required /><br />
+        Password: <input type="text" name="password" required /><br />
+      </form>
+    </div>
+  </body>
+</html>

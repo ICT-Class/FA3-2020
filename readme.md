@@ -44,7 +44,7 @@ Endpoints as follows:
 
 /Web Server uses Flask framework and connects to the API server
 
-![UI](https://github.com/IT-class-repo/FA3-2020/raw/master/Pokemon Social UI.png "UI")
+![UI](https://github.com/IT-class-repo/FA3-2020/raw/master/Pokemon%20Social%20UI.png "UI")
 
 ## Copyright
 
