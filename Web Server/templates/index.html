@@ -19,21 +19,19 @@
       </ul>
     </div>
     <div>
+      <form action="/search/pokemon" method="get">
+        <input type="text" name="searchtext" /><br />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    <div>
       <table>
         {% for catch in caught %}
         <tr>
-          <td>
-            id: {{catch.caughtId}}
-          </td>
-          <td>
-            Date: {{catch.datetime}}
-          </td>
-          <td>
-            state: {{catch.state}}
-          </td>
-          <td>
-            by: {{catch.userId}}
-          </td>
+          <td>id: {{catch.caughtId}}</td>
+          <td>Date: {{catch.datetime}}</td>
+          <td>state: {{catch.state}}</td>
+          <td>by: {{catch.userId}}</td>
         </tr>
         {% endfor %}
       </table>

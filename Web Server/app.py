@@ -11,6 +11,22 @@ def index():
     return render_template("index.html", caught=caught.json())
 
 
+@app.route('/search/pokemon')
+def search_pokemon():
+    searchtext = request.args.get('searchtext')
+    pokemons = requests.get(
+        'http://127.0.0.1:5000/search/pokemon', params={'searchtext': searchtext})
+    return render_template("search.html", pokemons=pokemons.json(), searchtext=searchtext)
+
+
+@app.route('/search/user')
+def search_user():
+    searchtext = request.args.get('searchtext')
+    users = requests.get(
+        'http://127.0.0.1:5000/search/user', params={'searchtext': searchtext})
+    return render_template("search.html", users=users.json(), searchtext=searchtext)
+
+
 @app.route('/pokemon')
 def firstpokemon():
     response = requests.get('http://127.0.0.1:5000/pokemon')
@@ -35,6 +51,7 @@ def response():
     }
     requests.post('http://127.0.0.1:5000/pokemon/add', json=newPoke)
     return render_template("add.html", name=newPoke['name'], hp=newPoke["hp"], attack=newPoke["attack"], defense=newPoke["defense"], speed=newPoke['speed'], image=newPoke['image'])
+
 
 @app.route('/login')
 def login():

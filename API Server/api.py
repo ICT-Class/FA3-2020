@@ -41,7 +41,9 @@ def get_poke_by_id(id):
     elif request.method == 'DELETE':
         pass  # Todo
 
-#user/create
+# user/create
+
+
 @app.route("/user/create", methods=['POST'])
 def add_user():
     newUser = request.get_json()
@@ -54,6 +56,7 @@ def add_user():
     c.execute(sql, (email, password))
     get_db().commit()
     return jsonify("done")
+
 
 @app.route("/pokemon/add", methods=['POST'])
 def add_poke():
@@ -82,6 +85,18 @@ def add_poke():
 def caught():
     c = get_db().cursor()
     results = c.execute("SELECT * FROM caught")
+    caught_info = []
+    for row in results:
+        caught_info.append(dict(row))
+    return jsonify(caught_info)
+
+
+@app.route('/search/pokemon')
+def search_pokemon():
+    searchtext = request.args.get('searchtext')
+    c = get_db().cursor()
+    results = c.execute(
+        "SELECT * FROM pokemon WHERE name LIKE ?", ["%"+searchtext+"%"])
     caught_info = []
     for row in results:
         caught_info.append(dict(row))

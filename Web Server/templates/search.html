@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='home.css') }}"
+    />
+    <title>Search Results</title>
+  </head>
+  <body>
+    <div class="menu">
+      <ul>
+        <li>Add</li>
+        <li>Pokemon</li>
+        <li>Players</li>
+      </ul>
+    </div>
+    <div>
+      <div>
+        <form action="/search/pokemon" method="get">
+          <input type="text" name="searchtext" value="{{searchtext}}" /><br />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+
+      {% if pokemons %}
+      <table>
+        {% for pokemon in pokemons %}
+        <tr>
+          <td>name: {{pokemon.name}}</td>
+          <td>Added on: {{pokemon.addedDatetime}}</td>
+          <td>hp: {{pokemon.hp}}</td>
+          <td>attack: {{pokemon.attack}}</td>
+          <td>defense: {{pokemon.defense}}</td>
+          <td>speed: {{pokemon.speed}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %} {% if users %}
+      <table>
+        {% for user in users %}
+        <tr>
+          <td>email: {{user.name}}</td>
+          <td>firstName: {{user.firstName}}</td>
+          <td>lastName: {{user.lastName}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %} {% if not pokemons and not users %}
+      <span>No result found</span>
+      {% endif %}
+    </div>
+  </body>
+</html>
