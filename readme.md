@@ -4,11 +4,11 @@ This is an exmaple project for FA3 created by Mr Wong.
 
 ## /API Server
 
-API Server is a REST API that serve data through API endpoints.
+API Server is a REST API that serves data through API endpoints.
 API Server uses SQLite database and demonstrates the use of SQL to perform CRUD operations.
-No object-relational mapper like sqlalchemy used.
+No object-relational mapper like sqlalchemy used as students are learning SQL.
 
-![ER](https://github.com/IT-class-repo/FA3-2020/raw/master/ERD.png "ER")
+![ER](https://github.com/IT-class-repo/FA3-2020/raw/master/ERD.png 'ER')
 
 Endpoints as follows:
 
@@ -44,7 +44,7 @@ Endpoints as follows:
 
 /Web Server uses Flask framework and connects to the API server
 
-![UI](https://github.com/IT-class-repo/FA3-2020/raw/master/Pokemon%20Social%20UI.png "UI")
+![UI](https://github.com/IT-class-repo/FA3-2020/raw/master/Pokemon%20Social%20UI.png 'UI')
 
 ## Copyright
 
