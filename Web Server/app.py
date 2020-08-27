@@ -9,7 +9,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     caught = requests.get('http://127.0.0.1:5000/caught')
-    return render_template("index.html", caught=caught.json())
+    debug = caught.json()
+    return render_template("index.html", caught=debug)
 
 
 @app.route('/search/pokemon')

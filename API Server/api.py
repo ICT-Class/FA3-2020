@@ -92,11 +92,13 @@ def add_poke():
     get_db().commit()
     return jsonify("done")
 
-
+#SELECT c.pokeId, c.userId, p.name, u.firstName
+#FROM Caught c, Pokemon p, "User" u
+#WHERE c.pokeId = p.pokeId AND c.userId = u.userId
 @app.route('/caught')
 def caught():
     c = get_db().cursor()
-    results = c.execute("SELECT * FROM caught")
+    results = c.execute("SELECT * FROM Caught c, Pokemon p, 'User' u WHERE c.pokeId = p.pokeId AND c.userId = u.userId")
     caught_info = []
     for row in results:
         caught_info.append(dict(row))
